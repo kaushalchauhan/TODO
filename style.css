@@ -6,7 +6,7 @@
 }
 :root {
   /* 168  */
-  --hue: 500;
+  --hue: 294;
   --primary: hsl(var(--hue), 76%, 36%);
   --primary-light: hsl(var(--hue), 76%, 56%);
   --primary-super-light: hsl(var(--hue), 36%, 95%);
@@ -122,8 +122,8 @@ body {
 }
 .redlabel {
   width: 50px;
-  background-color: rgb(200, 66, 66);
-  height: 2px;
+  background-color: rgb(84, 28, 95);
+  height: 3px;
   margin-right: 5px;
 }
 
