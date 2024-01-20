@@ -10,6 +10,8 @@
   --primary: hsl(var(--hue), 76%, 36%);
   --primary-light: hsl(var(--hue), 76%, 56%);
   --primary-super-light: hsl(var(--hue), 36%, 95%);
+  --primary-gray: hsl(var(--hue), 0%, 40%);
+  --primary-black: hsl(var(--hue), 1%, 20%);
   --bg: hsl(var(--hue), 10%, 10%);
 }
 
@@ -25,7 +27,6 @@ body {
 }
 .heading {
   text-align: center;
-  margin-bottom: 1rem;
   font-size: 3rem;
   color: var(--primary);
   text-transform: uppercase;
@@ -50,14 +51,14 @@ body {
   outline: none;
 }
 .todo-form-button {
-  width: 10%;
-  height: 70%;
+  padding: 0.5rem 2rem;
   background-color: var(--primary);
   color: var(--primary-super-light);
   border: none;
   font-size: 1.2rem;
   font-family: inherit;
   border-radius: 0.3rem;
+  cursor: pointer;
 }
 .todos {
   margin-top: 1rem;
@@ -105,8 +106,112 @@ body {
   font-weight: bold;
   color: var(--primary-super-light);
   text-transform: capitalize;
+  min-width: 60%;
+  overflow: auto;
 }
 .completed {
   text-decoration: line-through;
   opacity: 0.8;
+}
+.heading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+.redlabel {
+  width: 50px;
+  background-color: rgb(200, 66, 66);
+  height: 2px;
+  margin-right: 5px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  min-width: 330px;
+  min-height: 280px;
+  position: relative;
+  border-radius: 1rem;
+  padding-block: 2.5rem;
+}
+.modal .close-modal {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal .editTodoLabel {
+  text-align: center;
+  display: block;
+  margin-block: 1rem;
+  font-size: 2rem;
+  text-decoration: underline;
+  color: var(--primary-gray);
+}
+.modal #editTodoInput {
+  display: block;
+  margin-block: 2rem;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 4px;
+  color: var(--primary-black);
+  border: 1.5px solid black;
+}
+.modal #editTodoInput:focus {
+  outline: none;
+}
+.modal .modal-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.modal #saveEditButton {
+  background-color: var(--primary);
+  padding: 1rem 2rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(252, 251, 251);
+  font-size: 1rem;
+}
+.modal #saveEditButton:hover {
+  background-color: rgb(43, 99, 43);
+}
+.modal .cancelEditButton:hover {
+  background-color: rgba(16, 5, 5, 0.759);
+}
+.modal .cancelEditButton {
+  background-color: rgb(11, 5, 5);
+  color: #888;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.edit-todo-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

@@ -35,5 +35,14 @@ function toggleCompleted(id, completed) {
     }
   });
 }
-export { addTodo, deleteTodo, toggleCompleted };
+function editTodo(id, newTitle) {
+  storeProxy.todos = storeProxy.todos.map((todo) => {
+    if (todo.id === id) {
+      return { ...todo, title: newTitle };
+    } else {
+      return todo;
+    }
+  });
+}
+export { addTodo, deleteTodo, toggleCompleted, editTodo };
 export default storeProxy;

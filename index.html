@@ -9,13 +9,31 @@
 </head>
 
 <body>
-    <h1 class="heading">Todo List</h1>
+    <div class="heading-wrapper">
+        <div class="redlabel"></div>
+        <div class="heading">Todo List</div>
+    </div>
     <form id="form" class="form container">
-        <input type="text" id="todo-title-input" class="todo-title-input" placeholder="Todo title" />
+        <input type="text" id="todo-title-input" maxlength="28" class="todo-title-input" placeholder="Todo title" />
         <button type="submit" class="todo-form-button">Add</button>
     </form>
     <ul class="todos container">
 
     </ul>
+    <!-- Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal">
+                <span id="cancelEditButton">&times;</span>
+            </div>
+            <label for="editTodoInput" class="editTodoLabel">Edit Todo Title:</label>
+            <input type="text" id="editTodoInput" maxlength="28">
+            <div class="modal-btn-group">
+                <button id="saveEditButton">Save</button>
+                <button id="cancelEditButton" class="cancelEditButton">Cancel</button>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

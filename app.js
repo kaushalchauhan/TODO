@@ -1,6 +1,6 @@
 import render from "./render.js";
 import todoStore from "./data.js";
-import { addTodo, deleteTodo, toggleCompleted } from "./data.js";
+import { addTodo, deleteTodo, toggleCompleted, editTodo } from "./data.js";
 window.addEventListener("todoschange", () => {
   render();
 });
@@ -20,14 +20,17 @@ const form = document.getElementById("form");
 const inputTitle = document.getElementById("todo-title-input");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let todotitle = inputTitle.value;
-  const newTodo = {
-    id: crypto.randomUUID(),
-    title: todotitle,
-    complete: false,
-  };
-  addTodo(newTodo);
-  todotitle = " ";
+  let todotitle = inputTitle.value.trim();
+  if (todotitle !== "") {
+    const newTodo = {
+      id: crypto.randomUUID(),
+      title: todotitle,
+      complete: false,
+    };
+    addTodo(newTodo);
+  }
+
+  inputTitle.value = "";
 });
 
 // delete todo
@@ -39,6 +42,44 @@ todos.addEventListener("click", (e) => {
     deleteTodo(id);
   }
 });
+
+// edit todo
+const todosContainer = document.querySelector(".todos");
+const modal = document.getElementById("editModal");
+const modalInput = document.getElementById("editTodoInput");
+const saveEditButton = document.getElementById("saveEditButton");
+const cancelEditButton = document.getElementById("cancelEditButton");
+
+todosContainer.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.classList.contains("edit-todo-button")) {
+    const todoElement = target.closest(".todo");
+    const id = todoElement.dataset.id;
+    const todo = todoStore.todos.find((t) => t.id === id);
+
+    // Set the current todo title in the modal input
+    modalInput.value = todo.title;
+
+    // Show the modal
+    modal.style.display = "block";
+
+    // Save button click event
+    saveEditButton.addEventListener("click", () => {
+      const newTitle = modalInput.value;
+      editTodo(id, newTitle);
+
+      // Hide the modal after saving
+      modal.style.display = "none";
+    });
+
+    // Cancel button click event
+    cancelEditButton.addEventListener("click", () => {
+      // Hide the modal without saving
+      modal.style.display = "none";
+    });
+  }
+});
+
 // set completed
 todos.addEventListener("change", (e) => {
   const target = e.target;
