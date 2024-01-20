@@ -6,15 +6,17 @@
 }
 :root {
   /* 168  */
-  --hue: 200;
+  --hue: 500;
   --primary: hsl(var(--hue), 76%, 36%);
   --primary-light: hsl(var(--hue), 76%, 56%);
   --primary-super-light: hsl(var(--hue), 36%, 95%);
+  --bg: hsl(var(--hue), 10%, 10%);
 }
 
 body {
   font-family: "Nunito Sans", sans-serif;
   padding-top: 1rem;
+  background-color: var(--bg);
 }
 .container {
   max-width: 900px;
